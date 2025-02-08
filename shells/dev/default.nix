@@ -119,7 +119,9 @@ pkgs.mkShell {
     }
 
     # Trap handlers
-    trap cleanup_service SIGTERM SIGINT SIGHUP
+    # trap cleanup_service SIGTERM SIGINT SIGHUP
+    trap cleanup_service SIGTERM SIGHUP
+
     trap cleanup EXIT
 
     # Print service URLs
