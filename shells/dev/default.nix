@@ -119,8 +119,8 @@ pkgs.mkShell {
     }
 
     # Trap handlers
-    trap cleanup SIGTERM SIGINT SIGHUP
-    trap cleanup_service EXIT
+    trap cleanup_service SIGTERM SIGINT SIGHUP
+    trap cleanup EXIT
 
     # Print service URLs
     echo ""
@@ -129,7 +129,7 @@ pkgs.mkShell {
     if [ $REDIS_AVAILABLE -eq 1 ] && is_service_enabled "redis"; then
       echo "Redis:"
       echo "  URL: redis://$REDIS_USER:$REDIS_PASS@localhost:$REDIS_PORT/0"
-      echo "  Test: redis-cli -p $REDIS_PORT ping"
+      echo "  Test: redis-cli -p redis://$REDIS_USER:$REDIS_PASS@localhost:$REDIS_PORT/0 ping"
       echo ""
     fi
 

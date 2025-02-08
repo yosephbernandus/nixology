@@ -63,7 +63,7 @@ EOF
     redis_cleanup() {
       if [ $REDIS_AVAILABLE -eq 1 ]; then
         echo "Stopping Redis..."
-        redis-cli -p $REDIS_PORT shutdown || true
+	redis-cli -p 6380 -u redis://$REDIS_USER:$REDIS_PASS@localhost:$REDIS_PORT shutdown
       fi
     }
   '';
