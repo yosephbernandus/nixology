@@ -9,7 +9,15 @@
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        # pkgs = nixpkgs.legacyPackages.${system}.extend (final: prev: {
+        #   config.allowUnfree = true;
+        # });
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+        };
       in
       {
         devShells = {
@@ -18,6 +26,10 @@
             inherit pkgs; 
             enabledServices = "all";
           };
+
+          # Terraform shell
+          terraform = import ./shells/terraform { inherit pkgs; };
+
 
           # Individual service shells
           postgres = import ./shells/dev { 
