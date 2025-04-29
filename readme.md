@@ -72,15 +72,15 @@ nix develop .#database
 nix develop github:yosephbernandus/nix
 
 # Run specific service
-nix develop github:yosephbernandus/nix#postgres
-nix develop github:yosephbernandus/nix#redis
-nix develop github:yosephbernandus/nix#rabbitmq
+nix develop github:yosephbernandus/nixology#postgres
+nix develop github:yosephbernandus/nixology#redis
+nix develop github:yosephbernandus/nixology#rabbitmq
 
 # Run combined services
-nix develop github:yosephbernandus/nix#database
+nix develop github:yosephbernandus/nixology#database
 
 # Or use environment variables
-ENABLED_SERVICES="postgres redis" nix develop github:yosephbernandus/nix
+ENABLED_SERVICES="postgres redis" nix develop github:yosephbernandus/nixology
 ```
 ### Cleanup
 Services are automatically cleaned up when you exit the shell. Data is stored in **.services/** directory.
