@@ -64,6 +64,11 @@ nix develop .#rabbitmq
 # Run combination
 nix develop .#database
 
+# Python 3.7
+nix develop .#python37
+
+# Terraform
+nix develop .#terraform
 ```
 
 ### Direct Github URL
@@ -81,6 +86,12 @@ nix develop github:yosephbernandus/nixology#database
 
 # Or use environment variables
 ENABLED_SERVICES="postgres redis" nix develop github:yosephbernandus/nixology
+
+# Python 3.7
+nix develop github:yosephbernandus/nixology#python37
+
+# Terraform
+nix develop github:yosephbernandus/nixology#terraform
 ```
 ### Cleanup
 Services are automatically cleaned up when you exit the shell. Data is stored in **.services/** directory.
